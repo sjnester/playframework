@@ -40,8 +40,8 @@ object Step {
 
 The fold method defines an iteratee as one of the three mentioned states. It accepts three callback functions and will call the appropriate one depending on its state to eventually extract a required value. When calling `fold` on an iteratee you are basically saying:
 
-- If the iteratee is in the state `Done`, then I'll take the calculated result of type `A` and what is left from the last consumed chunk of input `Input[E]` and eventually produce a `B`
-- If the iteratee is in the state `Cont`, then I'll take the provided continuation (which is accepting an input) `Input[E] => Iteratee[E,A]` and eventually produce a `B`. Note that this state provides the only way to push input into the iteratee, and get a new iteratee state, using the provided continuation function. 
+- If the iteratee is in the state `Done`, then it'll take the calculated result of type `A` and what is left from the last consumed chunk of input `Input[E]` and eventually produce a `B`
+- If the iteratee is in the state `Cont`, then it'll take the provided continuation (which is accepting an input) `Input[E] => Iteratee[E,A]` and eventually produce a `B`. Note that this state provides the only way to push input into the iteratee, and get a new iteratee state, using the provided continuation function. 
 - If the iteratee is in the state `Error`, then I'll take the error message of type `String` and the input that caused it and eventually produce a B.
 
 Depending on the state of the iteratee, `fold` will produce the appropriate `B` using the corresponding passed-in function.
